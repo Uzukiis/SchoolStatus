@@ -1,0 +1,69 @@
+.hero-section{
+    display: flex;
+    height: 100dvh;
+    width: 100dvw;
+    flex-direction: row;
+    background-image: linear-gradient(-140deg, #4189f5, #c2e2fd);
+}
+.main-container{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.linia_text{
+    font-size: 48px;
+    font-weight: bold;
+}
+.temp_text{
+    font-size: 24px;
+    font-weight: bold;
+}
+.zwykly_text{
+    font-size: 24px;
+    font-weight: 400;
+
+}
+
+
+.cloudpic{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.tempwiatr{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+#left{
+display: flex;
+justify-content: space-between;
+}
+
+
+#right{
+display: flex;
+justify-content: space-between;
+}
+.linie{
+display:flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+#dzwonek_tekst{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.linie{
+    margin-top: 20px;
+}
