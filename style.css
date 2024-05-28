@@ -40,8 +40,9 @@
 }
 .tempwiatr{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
     
 }
 #left{
@@ -66,4 +67,17 @@ flex-direction: column;
 }
 .linie{
     margin-top: 20px;
+}
+.bold_text{
+    font-weight: bold;
+}
+.duzy_text{
+    font-size: 36px;
+    font-weight: bold;
+}
+#strona{
+    font-size: 24px;
+}
+.red_text{
+    color: #880000;
 }
