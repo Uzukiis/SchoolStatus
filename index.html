@@ -11,15 +11,14 @@
     <section class="hero-section">
         <div class="main-container" id="left">
             <div class="cloudpic">
-                <img src="./images/cloud.png" />
+                <img src="./images/cloud.png" /></div>
                 <div class="tempwiatr">
-                    <p class="temp_text">Temperatura: <br>{{temperatura}}</p>
-                    <p class="temp_text">Wiatr: <br>{{wiatr}}</p>
+                    <p class="duzy_text" id="temperatura_text">Temperatura: <br>{{temperatura}}</p>
+                    <p class="duzy_text" id="wiatr_text">Wiatr: <br>{{wiatr}}</p>
                 </div>
-            </div>
+            
             <div>
-                <p class="temp_text">prawdobopieństwo opadów: {{opady}}</p>
-                <!-- <img src="chuj" /> -->
+                <p class="duzy_text" id="wilgotnosc_text">Wilgotność: </p>
             </div>
     
     
@@ -28,18 +27,20 @@
     <div class="main-container" id="right">
         <div class="linie">
             <div>
-                <img src="./images/autobus.jpg" />
+                <img src="./images/autobus2.png" />
             </div>
-            <p class="linia_text">Linia </p>
-            <p class="zwykly_text">Nastepny autobus odjedzie z za</p>
-            <p class="linia_text">Linia </p>
-            <p class="zwykly_text">Nastepny autobus odjedzie z za </p>
-            <p class="linia_text">Linia </p>
-            <p class="zwykly_text">Nastepny autobus odjedzie z za </p>
+            <p class="linia_text" id="linia_text1">Linia </p>
+            <p class="zwykly_text" id="harmonogram_text1">Nastepny autobus odjedzie z za <br>kierunek:</p>
+            <p class="linia_text" id="linia_text2">Linia </p>
+            <p class="zwykly_text" id="harmonogram_text2">Nastepny autobus odjedzie z za <br>kierunek:</p>
+            <p class="linia_text" id="linia_text3">Linia </p>
+            <p class="zwykly_text" id="harmonogram_text3">Nastepny autobus odjedzie z za <br>kierunek:</p>
+            <br>
+            <p id="strona" class="bold_text">Strona $</p>
         </div>
-        <p class="zwykly_text" id="dzwonek_tekst">Dzwonek będzie za:</p>
+        <p class="duzy_text" id="dzwonek_tekst">Dzwonek będzie za:</p>
     </div>
     <script src = "script.js"></script>
     
-</body>s
+</body>
 </html>
