@@ -10,22 +10,25 @@
 <body>
     <section class="hero-section">
         <div class="main-container" id="left">
-            <div class="cloudpic">
-                <img src="./images/cloud.png" /></div>
+            <div class="box-shadow left_main" >
+                <div class="box-shadow" id="swinoujscie_div">
+                    <p class="temp_text">Świnoujście</p>
+                </div>
+                <div class="box-shadow"><img src="./images/cloud.png" id="cloud_img"/></div>
+                
                 <div class="tempwiatr">
-                    <p class="duzy_text" id="temperatura_text">Temperatura: <br>{{temperatura}}</p>
-                    <p class="duzy_text" id="wiatr_text">Wiatr: <br>{{wiatr}}</p>
+                    <p class="temp_text" id="temperatura_text">Temperatura: <br>{{temperatura}}</p>
+                    <p class="temp_text" id="wiatr_text">Wiatr: <br>{{wiatr}}</p>
                 </div>
             
             <div>
-                <p class="duzy_text" id="wilgotnosc_text">Wilgotność: </p>
+                <p class="temp_text" id="wilgotnosc_text">Wilgotność: </p>
             </div>
-    
-    
         </div>
+    </div>
         
     <div class="main-container" id="right">
-        <div class="linie">
+        <div class="linie box-shadow">
             <div>
                 <img src="./images/autobus2.png" />
             </div>
@@ -38,7 +41,8 @@
             <br>
             <p id="strona" class="bold_text">Strona $</p>
         </div>
-        <p class="duzy_text" id="dzwonek_tekst">Dzwonek będzie za:</p>
+        <div class="box-shadow" id="dzwonek_div">
+        <p class="temp_text" id="dzwonek_tekst">Dzwonek będzie za:</p></div>
     </div>
     <script src = "script.js"></script>
     
