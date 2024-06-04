@@ -1,0 +1,133 @@
+
+
+.hero-section{
+    display: flex;
+    height: 100dvh;
+    width: 100dvw;
+    flex-direction: row;
+    background-color: #DEE2F0;
+    padding: 20px;
+}
+.main-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+
+
+.linia_text{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.swinoujscie_text{
+    font-size: 36px;
+    font-weight: 500;
+}
+.zwykly_text{
+    font-size: 24px;
+    font-weight: 400;
+
+}
+
+
+.left_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 75%;
+    height: 60%;
+    
+}
+.box-shadow{
+    box-shadow: 0px 0px 15px rgba(132, 132, 132, 0.5);
+    border-radius: 25px 25px 25px 25px;
+    background-color: #ffffff;
+    
+}
+
+.tempwiatr{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    
+}
+#left{
+display: flex;
+justify-content: space-around;
+}
+
+
+#right{
+display: flex;
+justify-content: space-around;
+
+}
+.linie{
+display:flex;
+justify-content: center;
+align-items: start;
+flex-direction: column;
+padding: 20px;
+}
+#dzwonek_tekst{
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.bold_text{
+    font-weight: bold;
+}
+.temp_text{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+}
+#strona{
+    font-size: 24px;
+}
+.red_text{
+    color: #880000;
+}
+.green_text{
+    color: #008800;
+}
+
+#swinoujscie_div{
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    text-align: center
+}
+#cloud_img{
+    max-width: 300px;
+}
+#dzwonek_div{
+    display: flex;
+    padding: 10px 40px 10px 40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;}
+#strona_div{
+    display: flex;
+    padding: 5px 20px 5px 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.alert_div{
+    display: flex;
+    padding: 10px 40px 10px 40px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
