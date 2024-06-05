@@ -1,3 +1,4 @@
+//Skrypt na dzwonek
 const HOUR = 3600;
 const MINUTE = 60;
 const Dzwonki_lista = [8*HOUR, 8*HOUR + 45*MINUTE, 8*HOUR+50*MINUTE, 9*HOUR + 35*MINUTE,
@@ -37,7 +38,7 @@ setInterval(check_the_bell, 1000);
 
 
 
-
+//Skrypt na pogodę
 async function checkWeather() {
   const apikey = "26d41148a03f9ef6edb92c4787bcbe7b";
   const apiurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=Swinoujscie&appid=${apikey}`;
@@ -56,8 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
   checkWeather();
   setInterval(checkWeather, 600000)});
 
-//Skrypt na alerty
 
+
+
+
+//Skrypt na alerty
 const selectedLocations = ["3263"]; // Świnoujście i Kamień Pomorski
 
         fetch('https://meteo.imgw.pl/api/meteo/messages/v1/osmet/latest/osmet-teryt')
@@ -68,7 +72,7 @@ const selectedLocations = ["3263"]; // Świnoujście i Kamień Pomorski
                         jsonData.teryt[location].forEach(warningId => {
                             const warning = jsonData.warnings[warningId];
                             if (warning) {
-                                document.getElementById('alert_content').innerHTML = `
+                                document.getElementById('alert_content').innerHTML += `
                                         <h2 class="red_text">${warning.PhenomenonName} (Poziom: ${warning.Level})</h2>
                                         <p class="red_text">${warning.Content}</p>
                                         <p class="red_text">Ważne od: ${warning.ValidFrom} do: ${warning.ValidTo}</p>
@@ -90,8 +94,12 @@ const selectedLocations = ["3263"]; // Świnoujście i Kamień Pomorski
 
 
 
-//Skrypt na autobusy
 
+
+
+
+
+//Skrypt na autobusy
 let busPage=1;
 async function fetchBusSchedule(url) {
   const proxyUrl = 'http://localhost:8080/'; 
