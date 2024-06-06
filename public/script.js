@@ -1,4 +1,3 @@
-//Skrypt na dzwonek
 const HOUR = 3600;
 const MINUTE = 60;
 const Dzwonki_lista = [8*HOUR, 8*HOUR + 45*MINUTE, 8*HOUR+50*MINUTE, 9*HOUR + 35*MINUTE,
@@ -38,35 +37,73 @@ setInterval(check_the_bell, 1000);
 
 
 
-//Skrypt na pogodę
 async function checkWeather() {
-  const apikey = "26d41148a03f9ef6edb92c4787bcbe7b";
-  const apiurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=Swinoujscie&appid=${apikey}`;
-  const response = await fetch(apiurl);
-  const data = await response.json();
-  console.log(data, "data");
-  document.getElementById("temperatura_text").innerHTML = `Temperatura:<br><span class="red_text">${Math.round(data.main.temp)} &#8451</span>`;
-  document.getElementById("wilgotnosc_text").innerHTML = `Wilgotność: <span class="red_text">${data.main.humidity}%</span>`;
-  document.getElementById("wiatr_text").innerHTML = `Wiatr:<br><span class="red_text">${data.wind.speed} km/h</span>`;
-
-
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  checkWeather();
-  setInterval(checkWeather, 600000)});
-
-
-
-
+    const apikey = "26d41148a03f9ef6edb92c4787bcbe7b";
+    const apiurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=Swinoujscie&appid=${apikey}`;
+    const response = await fetch(apiurl);
+    const data = await response.json();
+    console.log(data, "data");
+  
+    document.getElementById("temperatura_text").innerHTML = `Temperatura:<br><span class="red_text">${Math.round(data.main.temp)} &#8451</span>`;
+    document.getElementById("wilgotnosc_text").innerHTML = `Wilgotność: <span class="red_text">${data.main.humidity}%</span>`;
+    document.getElementById("wiatr_text").innerHTML = `Wiatr:<br><span class="red_text">${data.wind.speed} km/h</span>`;
+  
+    let newweathercondition = data.weather[0].id;
+    check_condition(newweathercondition);
+  }
+  
+  function check_condition(condition) {
+    console.log(condition);
+    let imgSrc;
+    switch (true) {
+      case condition >= 200 && condition <= 232:
+        imgSrc = "./images/storm.png";
+        break;
+      case condition >= 300 && condition <= 321 ||condition >= 701 && condition <= 781 || condition >= 802 && condition <= 804:
+        imgSrc = "./images/cloud.png";
+        break;
+      case condition >= 500 && condition <= 531:
+        imgSrc = "./images/rainy-day.png";
+        break;
+      case condition >= 600 && condition <= 622:
+        imgSrc = "./images/snow.png";
+        break;
+      case condition == 800:
+        imgSrc = "./images/sun.png";
+        break;
+      case condition == 801:
+        imgSrc = "http://openweathermap.org/img/wn/02d@2x.png";
+        break;
+      default:
+        console.error("Can't find condition");
+        return;
+    }
+  
+    document.getElementById("cloud_img").src = imgSrc;
+    console.log("Image should change to:", imgSrc);
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    checkWeather();
+    setInterval(checkWeather, 600000);
+  });
+  
 
 //Skrypt na alerty
-const selectedLocations = ["3263"]; // Świnoujście i Kamień Pomorski
+
+const delayLoop = (fn, delay) => {
+    return (x, i) => {
+      setTimeout(() => {
+        fn(x);
+      }, i * delay);
+    }
+  };
+const selectedLocations = ["1001", "1007"]; // Świnoujście i Kamień Pomorski
 
         fetch('https://meteo.imgw.pl/api/meteo/messages/v1/osmet/latest/osmet-teryt')
             .then(response => response.json())
             .then(jsonData => {
+                
                 selectedLocations.forEach(location => {
                     if (jsonData.teryt[location]) {
                         jsonData.teryt[location].forEach(warningId => {
@@ -77,13 +114,12 @@ const selectedLocations = ["3263"]; // Świnoujście i Kamień Pomorski
                                         <p class="red_text">${warning.Content}</p>
                                         <p class="red_text">Ważne od: ${warning.ValidFrom} do: ${warning.ValidTo}</p>
                                         <p class="red_text">Prawdopodobieństwo: ${warning.Probability}%</p>
-                                        <p class="red_text">${warning.Comments}</p>
+                                        <p class="red_text">${warning.Comments} ${location}</p>
                                 `;
-                                warningsDiv.innerHTML += warningContent;
                             }
                         });
                     } else {
-                          document.getElementById('alert_content').innerHTML = `<span class="green_text zwykly_text">Brak ostrzeżeń pogodowych :)</span>`;                      
+                          document.getElementById('alert_content').innerHTML = `<span class="green_text zwykly_text">Brak ostrzeżeń :)</span>`;                      
                     }
                 });
             })
@@ -94,12 +130,8 @@ const selectedLocations = ["3263"]; // Świnoujście i Kamień Pomorski
 
 
 
-
-
-
-
-
 //Skrypt na autobusy
+
 let busPage=1;
 async function fetchBusSchedule(url) {
   const proxyUrl = 'http://localhost:8080/'; 
@@ -132,6 +164,9 @@ function processBusData(data) {
 function parseTime(timeString) {
   if (timeString.includes('min')) {
       const minutes = parseInt(timeString.replace('< ', '').replace(' min', ''), 10);
+      if (minutes == null){
+        minutes = 0;
+      }
       const now = new Date();
       return now.setMinutes(now.getMinutes() + minutes);
   } else {
@@ -142,13 +177,20 @@ function parseTime(timeString) {
 
 function displayBusSchedule(allBuses) {
   
-
+    
 
   // Sortowanie autobusów według czasu przyjazdu
   allBuses.sort((a, b) => {
+    if (a.time == null){
+        a.time==0;
+    if (a.time == null){
+        a.time==0;
+    }
+    }
       const timeA = parseTime(a.time);
       const timeB = parseTime(b.time);
       return timeA - timeB;
+
   });
   if (busPage == 1) {
   document.getElementById('linia_text1').innerHTML = `Linia ${allBuses[0].line}`;
