@@ -39,6 +39,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    min-width: 400px;
+    min-height: 500px;
     width: 75%;
     height: 60%;
     
@@ -128,7 +130,9 @@ padding: 20px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+}
+.double_alert{
+    display: flex;
+    flex-direction: row;
 }
 
-}
