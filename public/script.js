@@ -98,7 +98,7 @@ const delayLoop = (fn, delay) => {
       }, i * delay);
     }
   };
-const selectedLocations = ["1001", "1007"]; // Świnoujście i Kamień Pomorski
+const selectedLocations = ["3263", "1007"]; // Świnoujście i Kamień Pomorski
 
         fetch('https://meteo.imgw.pl/api/meteo/messages/v1/osmet/latest/osmet-teryt')
             .then(response => response.json())
